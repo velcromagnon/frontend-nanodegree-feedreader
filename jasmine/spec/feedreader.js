@@ -112,7 +112,6 @@ $(function() {
     it('should have .entry element', function(done) {
       expect($('.feed')).toBeDefined();
       expect($('.feed').find('.entry-link').length).toBeGreaterThan(0);
-      console.log($('.feed').find('.entry-link'));
       done();
     });
   });
@@ -172,22 +171,20 @@ $(function() {
       // Click on second feed.
       $('.feed-list').trigger('click', 'a');
       $('.feed-list').click();
-      console.log("BE 1");
       contentFeed1 = $('.feed').find('.entry-link')[0];
 
       loadFeed(1, function() {
-        console.log("BE 2");
         contentFeed2 = $('.feed').find('.entry-link')[0];
         done();
       });
     });
 
     // Restore to feed 0 (default)
-    // afterEach(function(done) {
-    //   loadFeed(0, function() {
-    //     done();
-    //   });
-    // });
+    afterEach(function(done) {
+      loadFeed(0, function() {
+        done();
+      });
+    });
 
     it('Correct feed is loaded on click and menu is gone' , function(done) {
       expect($('body')[0].classList).toContain('menu-hidden');
