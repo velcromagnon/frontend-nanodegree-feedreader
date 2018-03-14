@@ -119,7 +119,9 @@ $(function() {
       // Check that there is an entry within the feed.
       expect($('.feed .entry')).toBeDefined();
       // Check that the feed has data.
-      expect($('.feed .entry').length).toBeGreaterThan(0);
+      expect($('.feed .entry')[0]).toBeDefined();
+      expect($('.feed .entry')[0].innerHTML).toBeDefined();
+      expect($('.feed .entry')[0].innerHTML).not.toBe("");
       done();
     });
   });
